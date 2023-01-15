@@ -1,4 +1,7 @@
 import streamlit as st
+pip install folium
+
+
 
 import pandas as pd
 import folium
