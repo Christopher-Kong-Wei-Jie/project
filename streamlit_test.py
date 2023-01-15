@@ -2,7 +2,7 @@ import streamlit as st
 import subprocess
 
 import pandas as pd
-import folium
+
 import numpy as np
 
 
@@ -159,6 +159,7 @@ def install(name):
 
     
 install('folium')
+import folium
 
 st.set_page_config(layout='wide')
 
