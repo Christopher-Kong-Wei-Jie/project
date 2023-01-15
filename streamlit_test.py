@@ -1,7 +1,5 @@
 import streamlit as st
-pip install folium
-
-
+import subprocess
 
 import pandas as pd
 import folium
@@ -154,6 +152,13 @@ def popup_html(row,df):
 </html>
 """
     return html
+
+
+def install(name):
+    subprocess.call(['pip', 'install', name])
+
+    
+install('folium')
 
 st.set_page_config(layout='wide')
 
