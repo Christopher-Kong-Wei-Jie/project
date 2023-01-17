@@ -158,7 +158,7 @@ st.set_page_config(layout='wide')
 
 st.title('Laundromat analytics')
 
-df = pd.read_csv('data_weather.csv')
+df = pd.read_csv('weather.csv')
 
 pos = df[['latitude','longitude']]
 
