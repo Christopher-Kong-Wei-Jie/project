@@ -1,8 +1,10 @@
 import streamlit as st
-import folium
-import pandas as pd
 
+import folium
+
+import pandas as pd
 import numpy as np
+
 
 
 def popup_html(row,df):
@@ -152,14 +154,11 @@ def popup_html(row,df):
 """
     return html
 
-
-
-
 st.set_page_config(layout='wide')
 
-st.title('shitshitfuck')
+st.title('Laundromat analytics')
 
-df = pd.read_csv('weather.csv')
+df = pd.read_csv('data_weather.csv')
 
 pos = df[['latitude','longitude']]
 
@@ -210,12 +209,19 @@ data = st.dataframe(data = df_time)
 if st.button('save dataframe'):
     open('data.csv', 'w').write(df.to_csv())
 
-
-for i in range (df_time.shape[0]) :
-    html = popup_html(i,df)
-    popup  = folium.Popup(folium.Html(html,script = True), max_width=600, max_height=600)
-    folium.vector_layers.Marker(location=[df_time.latitude[i],df_time.longitude[i]], tooltip=i,popup = popup).add_to(map)
-    print('yum',i)
+if (time_option == 'None' || month_option == 'None') :
+    for i in range (df_time.shape[0]) :
+        html = popup_html(i,df)
+        #popup  = folium.Popup(folium.Html(html,script = True), max_width=600, max_height=600)
+        folium.vector_layers.Marker(location=[df_time.latitude[i],df_time.longitude[i]], tooltip=i).add_to(map)
+        print('yum',i)
+        
+else:
+    for i in range (df_time.shape[0]) :
+        html = popup_html(i,df)
+        popup  = folium.Popup(folium.Html(html,script = True), max_width=600, max_height=600)
+        folium.vector_layers.Marker(location=[df_time.latitude[i],df_time.longitude[i]], tooltip=i,popup=popup).add_to(map)
+        print('yum',i)
 
 map
 print(map)
