@@ -209,7 +209,7 @@ data = st.dataframe(data = df_time)
 if st.button('save dataframe'):
     open('data.csv', 'w').write(df.to_csv())
 
-if (time_option == 'None' || month_option == 'None') :
+if (time_option == 'None' or month_option == 'None') :
     for i in range (df_time.shape[0]) :
         html = popup_html(i,df)
         #popup  = folium.Popup(folium.Html(html,script = True), max_width=600, max_height=600)
